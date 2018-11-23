@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Aplicacion1</string>
+    <string name="test_string">Esta es una prueba de mi primer String</string>
+    <string name="el_nombre_que_yo_quiera">Hola este se creo como yo quiera</string>
+    <string name="title_activity_imagenes">Imagenes</string>
+    <string name="title_activity_ejercicio1">Ejercicio1</string>
+
+    <string name="lisa">Has elegido a Lisa</string>
+    <string name="homero">Has elegido a Homero</string>
+    <string name="bart">Has elegido a Bart</string>
+    <string name="moe">Has elegido a Moe</string>
+
+    <string-array name="country_arrays">
+        <item>México</item>
+        <item>Malaysia</item>
+        <item>United States</item>
+        <item>Indonesia</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Singapore</item>
+        <item>New Zealand</item>
+    </string-array>
+
+
+    <string-array name="avengers">
+        <item>Spiderman</item>
+        <item>Iron Man</item>
+        <item>Thor</item>
+        <item>Capitan America</item>
+    </string-array>
+</resources>
