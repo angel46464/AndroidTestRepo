@@ -28,6 +28,16 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".componets.Practicasvg.Practicasvg"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".componets.Practicasvg.Profile"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".componets.ViewPager.ViewPager"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".componets.goodviewpager.GoodViewPager"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,10 +45,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".componets.Practicasvg.Profile"
-            android:screenOrientation="portrait" />
-        <activity android:name=".componets.ViewPager.ViewPager"></activity>
     </application>
 
 </manifest>
