@@ -15,12 +15,14 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.realm.Realm;
+import io.realm.RealmList;
 import mx.udg.aplicacion1.R;
 import mx.udg.aplicacion1.componets.Database.model.DogShop;
 
 public class DogShopAdapter extends RecyclerView.Adapter<DogShopAdapter.ViewHolderAdapter> {
 
-    List<DogShop> dogShops;
+    RealmList<DogShop> dogShops;
 
     Context context;
 
@@ -28,7 +30,7 @@ public class DogShopAdapter extends RecyclerView.Adapter<DogShopAdapter.ViewHold
 
     DogShopLongClick dogShopLongClick;
 
-    public DogShopAdapter(List<DogShop> dogShops, Context context, DogShopClick dogShopClick, DogShopLongClick dogShopLongClick) {
+    public DogShopAdapter(RealmList<DogShop> dogShops, Context context, DogShopClick dogShopClick, DogShopLongClick dogShopLongClick) {
         this.dogShops = dogShops;
         this.context = context;
         this.dogShopClick = dogShopClick;

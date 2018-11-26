@@ -34,15 +34,21 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".componets.ViewPager.ViewPager"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".componets.goodviewpager.GoodViewPager"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" />
+        <activity android:name=".componets.Database.RealmRecyclerSampleActivity" />
+        <activity android:name=".componets.Database.model.EditShopActivity" />
+        <activity android:name=".componets.Notification.FirstActivity" />
+        <activity android:name=".componets.Notification.NotificationActivity" />
+        <activity android:name=".componets.webView.webViewSampleActivity">
 
         </activity>
-        <activity android:name=".componets.Database.RealmRecyclerSampleActivity"
+        <activity android:name=".componets.mediaplayer.MusicActivity">
 
-            >
+        </activity>
+        <activity android:name=".componets.mediaplayer.VideoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
