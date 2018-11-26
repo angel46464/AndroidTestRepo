@@ -28,17 +28,21 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".componets.Practicasvg.Practicasvg"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".componets.Practicasvg.Profile"
             android:screenOrientation="portrait" />
         <activity
             android:name=".componets.ViewPager.ViewPager"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".componets.goodviewpager.GoodViewPager"
             android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".componets.goodviewpager.GoodViewPager"
-            android:screenOrientation="portrait">
+        <activity android:name=".componets.Database.RealmRecyclerSampleActivity"
+
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
