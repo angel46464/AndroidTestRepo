@@ -8,7 +8,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:id="@+id/parent"
-    tools:context=".componets.Database.model.EditShopActivity">
+    tools:context=".Database.model.EditShopActivity">
 
 
     <android.support.design.widget.TextInputLayout

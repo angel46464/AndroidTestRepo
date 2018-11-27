@@ -23,7 +23,7 @@ public class MusicActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.play) public void play(View view){
+    /*@OnClick(R.id.play) public void play(View view){
         if(player == null){
             player = MediaPlayer.create(this,R.raw.song);
             player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -58,6 +58,6 @@ public class MusicActivity extends AppCompatActivity {
     protected void onStop(){
         super.onStop();
         stopPlayer();
-    }
+    }*/
 
 }

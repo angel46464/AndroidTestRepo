@@ -1,4 +1,4 @@
-package mx.udg.aplicacion1.componets.Database.model;
+package mx.udg.aplicacion1.componets.Database;
 
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
@@ -12,12 +12,15 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
+import java.nio.file.attribute.FileAttribute;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.realm.Realm;
 import io.realm.RealmQuery;
 import mx.udg.aplicacion1.R;
+import mx.udg.aplicacion1.componets.Database.model.DogShop;
 import mx.udg.aplicacion1.componets.Util.KeysConstants;
 import mx.udg.aplicacion1.componets.Util.Util;
 
@@ -46,11 +49,10 @@ public class EditShopActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_shop);
         ButterKnife.bind(this);
-        Realm.init(getApplicationContext());
         if(getSupportActionBar()!=null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        MODE = getIntent().getIntExtra(KeysConstants.MODE_KEY,2);
+        MODE = getIntent().getIntExtra(KeysConstants.MODE_KEY,0);
         setUpMode(MODE);
     }
 
@@ -85,10 +87,12 @@ public class EditShopActivity extends AppCompatActivity {
 
     @OnClick(R.id.buttonEnd) public void finalize(View view){
         if(noEmptyFields()){
-            if(MODE==KeysConstants.CREATE_MODE){
-                createShop();
-            }else{
-                updateShop();
+            if(validateFields()){
+                if(MODE==KeysConstants.CREATE_MODE){
+                    createShop();
+                }else{
+                    updateShop();
+                }
             }
         }else{
             Snackbar.make(mParentLayout,getString(R.string.empty_fields),Snackbar.LENGTH_SHORT).show();
@@ -148,9 +152,10 @@ public class EditShopActivity extends AppCompatActivity {
                 realmTransaction.copyToRealmOrUpdate(dogShop);
             }
         });
+        finish();
     }
 
-    public static String setRandomImage(){
+    private String setRandomImage(){
         switch (Util.getRandomNumber()){
             case 1:
                 return "http://weddingwoof.com/wp-content/uploads/2012/06/dogstore-1.jpg";
@@ -160,6 +165,12 @@ public class EditShopActivity extends AppCompatActivity {
                 return "https://barkpost.com/wp-content/uploads/2014/11/lavadogshawaii.jpg";
         }
         return "";
+    }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        finish();
     }
 
 }

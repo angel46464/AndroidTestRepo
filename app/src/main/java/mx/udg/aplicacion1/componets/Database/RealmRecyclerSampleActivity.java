@@ -6,11 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.LinearLayout;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -22,7 +17,6 @@ import mx.udg.aplicacion1.componets.Database.adapter.DogShopAdapter;
 import mx.udg.aplicacion1.componets.Database.adapter.DogShopClick;
 import mx.udg.aplicacion1.componets.Database.adapter.DogShopLongClick;
 import mx.udg.aplicacion1.componets.Database.model.DogShop;
-import mx.udg.aplicacion1.componets.Database.model.EditShopActivity;
 import mx.udg.aplicacion1.componets.Util.KeysConstants;
 import mx.udg.aplicacion1.componets.Util.Util;
 
@@ -30,7 +24,7 @@ public class RealmRecyclerSampleActivity extends AppCompatActivity implements Do
 
     private static String TAG = RealmRecyclerSampleActivity.class.getSimpleName();
 
-    private RealmList<DogShop> dogShops = new RealmList<>();
+    private RealmList<DogShop> dogShopList = new RealmList<>();
 
     private DogShopAdapter dogShopAdapter;
 
@@ -51,10 +45,10 @@ public class RealmRecyclerSampleActivity extends AppCompatActivity implements Do
     }
 
     private void getRealmObjects() {
-        dogShops.clear();
+        dogShopList.clear();
         Realm realm = Realm.getDefaultInstance();
         RealmResults<DogShop> dogShopsResults = realm.where(DogShop.class).findAll();
-        dogShops.addAll(dogShopsResults.subList(0,dogShopsResults.size()));
+        dogShopList.addAll(dogShopsResults.subList(0,dogShopsResults.size()));
         dogShopAdapter.notifyDataSetChanged();
     }
 
@@ -65,7 +59,7 @@ public class RealmRecyclerSampleActivity extends AppCompatActivity implements Do
     }
 
     private void setUpRecyclerView(RecyclerView mDogShopRecyclerView) {
-        dogShopAdapter = new DogShopAdapter(dogShops,getApplicationContext(),this,this);
+        dogShopAdapter = new DogShopAdapter(dogShopList,getApplicationContext(),this,this);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mDogShopRecyclerView.setAdapter(dogShopAdapter);
@@ -79,7 +73,6 @@ public class RealmRecyclerSampleActivity extends AppCompatActivity implements Do
         intent.putExtra(KeysConstants.DOG_SHOP_ID,dogShop.dogShopID);
         intent.putExtra(KeysConstants.MODE_KEY,KeysConstants.EDIT_MODE);
         startActivity(intent);
-        Util.showLog(TAG,"Click on "+dogShop.toString());
     }
 
     @Override
@@ -88,7 +81,7 @@ public class RealmRecyclerSampleActivity extends AppCompatActivity implements Do
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realmTransaction) {
-                dogShops.remove(dogShop);
+                dogShopList.remove(dogShop);
                 dogShopAdapter.notifyDataSetChanged();
                 RealmResults<DogShop> shops = realmTransaction.where(DogShop.class)
                         .equalTo(KeysConstants.DOG_SHOP_ID,dogShop.dogShopID)
@@ -96,7 +89,6 @@ public class RealmRecyclerSampleActivity extends AppCompatActivity implements Do
                 shops.deleteAllFromRealm();
             }
         });
-        Util.showLog(TAG,"Long click on "+dogShop.toString());
     }
 
     public DogShop createDommie(){

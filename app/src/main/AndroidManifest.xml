@@ -3,6 +3,8 @@
     package="mx.udg.aplicacion1">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -39,22 +41,41 @@
             android:name=".componets.goodviewpager.GoodViewPager"
             android:screenOrientation="portrait" />
         <activity android:name=".componets.Database.RealmRecyclerSampleActivity" />
-        <activity android:name=".componets.Database.model.EditShopActivity" />
         <activity android:name=".componets.Notification.FirstActivity" />
         <activity android:name=".componets.Notification.NotificationActivity" />
-        <activity android:name=".componets.webView.webViewSampleActivity">
+        <activity android:name=".componets.webView.webViewSampleActivity" />
+        <activity android:name=".componets.mediaplayer.MusicActivity" />
+        <activity android:name=".componets.mediaplayer.VideoActivity" />
+        <activity android:name=".componets.Database.EditShopActivity" />
+        <activity android:name=".componets.animations.AnimationSampleActivity" />
+        <activity android:name=".componets.animations.LottieSampleActivity" />
+        <activity android:name=".componets.jobscheduller.JobSchedullerActivity" />
 
-        </activity>
-        <activity android:name=".componets.mediaplayer.MusicActivity">
+        <service
+            android:name=".componets.jobscheduller.ExampleJobService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
 
-        </activity>
-        <activity android:name=".componets.mediaplayer.VideoActivity">
+        <activity android:name=".componets.location.LocationSampleActivity"></activity>
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity android:name=".componets.location.MapsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".componets.Geofences.GeoFencesActivity"></activity>
     </application>
 
 </manifest>
